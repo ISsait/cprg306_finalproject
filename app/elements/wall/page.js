@@ -11,7 +11,7 @@ export default function Wall({
     isWall,
   }) {
     return (
-      <main>
+      <main className="m-4">
         <h1 className="text-xl font-bold underline text-center" onClick={handleIsWall}>
           {isWall ? 'Wall' : 'Show Wall'}
         </h1>
@@ -19,7 +19,7 @@ export default function Wall({
           <div className="flex flex-col">
             <span>
               <label className="text-white text-lg font-bold mx-2">
-                Wall Depth (mm):{" "}
+                Wall Height (mm):{" "}
               </label>
               <input
                 type="number"

@@ -57,6 +57,11 @@ export default function Home() {
           </button>
         </span>
       )}
+      <div className="flex flex-col items-center justify-between p-2">
+        <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-2 text-lg mb-14 border-solid border-2 border-black">
+          <Link href="/about">About</Link>
+        </button>
+      </div>
     </main>
   );
 }

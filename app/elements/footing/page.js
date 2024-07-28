@@ -11,7 +11,7 @@ export default function Footing({
   isFooting,
 }) {
   return (
-    <main>
+    <main className="m-4">
       <h1 className="text-xl font-bold underline text-center" onClick={handleIsFooting}>
         {isFooting ? 'Footing' : 'Show Footing'}
       </h1>
