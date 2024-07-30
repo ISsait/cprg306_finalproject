@@ -5,7 +5,7 @@ import { useState } from "react";
 import Footing from "../elements/footing/page";
 import Wall from "../elements/wall/page";
 import Concrete from "../quantities/concrete/page";
-import Rebar from "../quantities/rebar/page";
+// import Rebar from "../quantities/rebar/page";
 
 export default function Dashboard() {
   const [footingDepth, setFootingDepth] = useState(0);
@@ -15,15 +15,12 @@ export default function Dashboard() {
 
   function handleFootingDepthChange(event) {
     setFootingDepth(event.target.value);
-    console.log(footingDepth);
   }
   function handleFootingWidthChange(event) {
     setFootingWidth(event.target.value);
-    console.log(footingWidth);
   }
   function handleFootingLinearChange(event) {
     setFootingLinear(event.target.value);
-    console.log(footingLinear);
   }
   function handleIsFooting() {
     let showFooting = isFooting;
@@ -38,6 +35,7 @@ export default function Dashboard() {
     depth: footingDepth,
     width: footingWidth,
     linear: footingLinear,
+    is: isFooting,
   };
 
   const [wallHeight, setWallHeight] = useState(0);
@@ -67,6 +65,7 @@ export default function Dashboard() {
     height: wallHeight,
     width: wallWidth,
     linear: wallLinear,
+    is: isWall,
   };
 
   const [isConcrete, setIsConcrete] = useState(false);
@@ -80,16 +79,16 @@ export default function Dashboard() {
     }
   }
 
-  const [isRebar, setIsRebar] = useState(false);
+  // const [isRebar, setIsRebar] = useState(false);
 
-  function handleIsRebar() {
-    let showRebar = isRebar;
-    if (!showRebar) {
-      setIsRebar(true);
-    } else {
-      setIsRebar(false);
-    }
-  }
+  // function handleIsRebar() {
+  //   let showRebar = isRebar;
+  //   if (!showRebar) {
+  //     setIsRebar(true);
+  //   } else {
+  //     setIsRebar(false);
+  //   }
+  // }
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -128,14 +127,14 @@ export default function Dashboard() {
           isConcrete={isConcrete}
         />
       </div>
-      <div>
+      {/* <div>
         <Rebar
           footingObject={footingObject}
           wallObject={wallObject}
           isRebar={isRebar}
           handleIsRebar={handleIsRebar}
         />
-      </div>
+      </div> */}
       <div className="flex flex-col items-center justify-between p-2 m-4">
         <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-2 text-lg mb-14 border-solid border-2 border-black">
           <Link href="/">Go To Home</Link>
