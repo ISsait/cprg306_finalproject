@@ -28,7 +28,7 @@ export default function About() {
         </p>
         <section className="m-2 text-white text-lg font-bold mx-4">
             <h3>Citations:</h3>
-            <p>[1] Splash Page Background Image: "Microsoft Stock Images," Microsoft 365 PowerPoint. Accessed: April 9, 2024. Available: https://www.microsoft.com/en-us/microsoft-365/powerpoint</p>
+            <p>[1] Splash Page Background Image: Microsoft Stock Images, Microsoft 365 PowerPoint. Accessed: April 9, 2024. Available: https://www.microsoft.com/en-us/microsoft-365/powerpoint</p>
         </section>
         <span className="flex flex-col items-center m-40">
         <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-2 text-lg mb-14 border-solid border-2 border-black">
