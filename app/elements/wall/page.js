@@ -1,21 +1,32 @@
+"use client";
 
+import { useState } from "react";
 
 export default function Wall({
-    handleWallHeightChange,
-    wallHeight,
-    handleWallWidthChange,
-    WallWidth,
-    handleWallLinearChange,
-    WallLinear,
-    handleIsWall,
-    isWall,
+    wallObject,
+    handleWallChange,
   }) {
+    
+    const [show, setShow] = useState(false);
+
+    function handleShow() {
+      let showComponent = show;
+      if (!showComponent) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    }
+
     return (
       <main className="m-4">
-        <h1 className="text-xl font-bold underline text-center" onClick={handleIsWall}>
-          {isWall ? 'Wall' : 'Show Wall'}
-        </h1>
-        {isWall && (
+        <span className="flex justify-center">
+        <h1 className="text-xl font-bold underline mt-3">Walls</h1>
+        <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black" onClick={handleShow}>
+          {show ? "Hide Walls" : "Show Walls"}
+        </button>
+      </span>
+        {show && (
           <div className="flex flex-col">
             <span>
               <label className="text-white text-lg font-bold mx-2">
@@ -23,8 +34,9 @@ export default function Wall({
               </label>
               <input
                 type="number"
-                value={wallHeight}
-                onChange={handleWallHeightChange}
+                name="height"
+                value={wallObject.height}
+                onChange={handleWallChange}
                 className="m-2 rounded-sm bg-slate-700 text-white"
               />
             </span>
@@ -34,8 +46,9 @@ export default function Wall({
               </label>
               <input
                 type="number"
-                value={WallWidth}
-                onChange={handleWallWidthChange}
+                name="width"
+                value={wallObject.width}
+                onChange={handleWallChange}
                 className="m-2 rounded-sm bg-slate-700 text-white"
               />
             </span>
@@ -45,8 +58,9 @@ export default function Wall({
               </label>
               <input
                 type="number"
-                value={WallLinear}
-                onChange={handleWallLinearChange}
+                name="linear"
+                value={wallObject.linear}
+                onChange={handleWallChange}
                 className="m-2 rounded-sm bg-slate-700 text-white"
               />
             </span>

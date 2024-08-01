@@ -8,75 +8,32 @@ import Concrete from "../quantities/concrete/page";
 // import Rebar from "../quantities/rebar/page";
 
 export default function Dashboard() {
-  const [footingDepth, setFootingDepth] = useState(0);
-  const [footingWidth, setFootingWidth] = useState(0);
-  const [footingLinear, setFootingLinear] = useState(0);
-  const [isFooting, setIsFootings] = useState(false);
+  const [footingObject, setFootingObject] = useState({
+    depth: 0,
+    width: 0,
+    linear: 0,
+  });
 
-  function handleFootingDepthChange(event) {
-    setFootingDepth(event.target.value);
-  }
-  function handleFootingWidthChange(event) {
-    setFootingWidth(event.target.value);
-  }
-  function handleFootingLinearChange(event) {
-    setFootingLinear(event.target.value);
-  }
-  function handleIsFooting() {
-    let showFooting = isFooting;
-    if (!showFooting) {
-      setIsFootings(true);
-    } else {
-      setIsFootings(false);
-    }
+  const [wallObject, setWallObject] = useState({
+    height: 0,
+    width: 0,
+    linear: 0,
+  });
+
+  function handleFootingChange(event) {
+    const { name, value } = event.target;
+    setFootingObject(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
-  const footingObject = {
-    depth: footingDepth,
-    width: footingWidth,
-    linear: footingLinear,
-    is: isFooting,
-  };
-
-  const [wallHeight, setWallHeight] = useState(0);
-  const [wallWidth, setWallWidth] = useState(0);
-  const [wallLinear, setWallLinear] = useState(0);
-  const [isWall, setIsWall] = useState(false);
-
-  function handleWallHeightChange(event) {
-    setWallHeight(event.target.value);
-  }
-  function handleWallWidthChange(event) {
-    setWallWidth(event.target.value);
-  }
-  function handleWallLinearChange(event) {
-    setWallLinear(event.target.value);
-  }
-  function handleIsWall() {
-    let showWall = isWall;
-    if (!showWall) {
-      setIsWall(true);
-    } else {
-      setIsWall(false);
-    }
-  }
-
-  const wallObject = {
-    height: wallHeight,
-    width: wallWidth,
-    linear: wallLinear,
-    is: isWall,
-  };
-
-  const [isConcrete, setIsConcrete] = useState(false);
-
-  function handleIsConcrete() {
-    let showConcrete = isConcrete;
-    if (!showConcrete) {
-      setIsConcrete(true);
-    } else {
-      setIsConcrete(false);
-    }
+  function handleWallChange(event) {
+    const { name, value } = event.target;
+    setWallObject(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   // const [isRebar, setIsRebar] = useState(false);
@@ -97,34 +54,20 @@ export default function Dashboard() {
       </header>
       <div>
         <Footing
-          handleFootingDepthChange={handleFootingDepthChange}
-          footingDepth={footingDepth}
-          handleFootingWidthChange={handleFootingWidthChange}
-          footingWidth={footingWidth}
-          handleFootingLinearChange={handleFootingLinearChange}
-          footingLinear={footingLinear}
-          handleIsFooting={handleIsFooting}
-          isFooting={isFooting}
+          footingObject={footingObject}
+          handleFootingChange={handleFootingChange}
         />
       </div>
       <div>
         <Wall
-          handleWallHeightChange={handleWallHeightChange}
-          wallHeight={wallHeight}
-          handleWallWidthChange={handleWallWidthChange}
-          WallWidth={wallWidth}
-          handleWallLinearChange={handleWallLinearChange}
-          WallLinear={wallLinear}
-          handleIsWall={handleIsWall}
-          isWall={isWall}
+          wallObject={wallObject}
+          handleWallChange={handleWallChange}
         />
       </div>
       <div>
         <Concrete
           footingObject={footingObject}
           wallObject={wallObject}
-          handleIsConcrete={handleIsConcrete}
-          isConcrete={isConcrete}
         />
       </div>
       {/* <div>

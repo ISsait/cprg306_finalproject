@@ -1,21 +1,32 @@
+"use client";
 
+import { useState } from "react";
 
 export default function Footing({
-  handleFootingDepthChange,
-  footingDepth,
-  handleFootingWidthChange,
-  footingWidth,
-  handleFootingLinearChange,
-  footingLinear,
-  handleIsFooting,
-  isFooting,
+  footingObject,
+  handleFootingChange,
 }) {
+
+  const [show, setShow] = useState(false);
+
+  function handleShow() {
+    let showComponent = show;
+    if (!showComponent) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }
+
   return (
     <main className="m-4">
-      <h1 className="text-xl font-bold underline text-center" onClick={handleIsFooting}>
-        {isFooting ? 'Footing' : 'Show Footing'}
-      </h1>
-      {isFooting && (
+      <span className="flex justify-center">
+        <h1 className="text-xl font-bold underline mt-3">Footings</h1>
+        <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black" onClick={handleShow}>
+          {show ? "Hide Footing" : "Show Footing"}
+        </button>
+      </span>
+      {show && (
         <div className="flex flex-col">
           <span>
             <label className="text-white text-lg font-bold mx-2">
@@ -23,8 +34,9 @@ export default function Footing({
             </label>
             <input
               type="number"
-              value={footingDepth}
-              onChange={handleFootingDepthChange}
+              name="depth"
+              value={footingObject.depth}
+              onChange={handleFootingChange}
               className="m-2 rounded-sm bg-slate-700 text-white"
             />
           </span>
@@ -34,8 +46,9 @@ export default function Footing({
             </label>
             <input
               type="number"
-              value={footingWidth}
-              onChange={handleFootingWidthChange}
+              name="width"
+              value={footingObject.width}
+              onChange={handleFootingChange}
               className="m-2 rounded-sm bg-slate-700 text-white"
             />
           </span>
@@ -45,8 +58,9 @@ export default function Footing({
             </label>
             <input
               type="number"
-              value={footingLinear}
-              onChange={handleFootingLinearChange}
+              name="linear"
+              value={footingObject.linear}
+              onChange={handleFootingChange}
               className="m-2 rounded-sm bg-slate-700 text-white"
             />
           </span>
