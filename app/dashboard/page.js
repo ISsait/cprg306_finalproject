@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footing from "../elements/footing/page";
 import Wall from "../elements/wall/page";
 import Concrete from "../quantities/concrete/page";
-// import Rebar from "../quantities/rebar/page";
+import Rebar from "../quantities/rebar/page";
 
 export default function Dashboard() {
   const [footingObject, setFootingObject] = useState({
@@ -20,9 +20,53 @@ export default function Dashboard() {
     linear: 0,
   });
 
+  const [concreteObject, setConcreteObject] = useState({
+    footingConcrete: 0,
+    wallConcrete: 0,
+    totalConcrete: 0,
+  });
+
+  const [rebarObject, setRebarObject] = useState({
+    footingRebarObject: {
+      continuous: {
+        diameter: 0,
+        spacing: 0,
+        stockBarQty: 0,
+        kg: 0,
+      },
+      transverse: {
+        diameter: 0,
+        spacing: 0,
+        fabBarQty: 0,
+        kg: 0,
+      },
+      dowels: {
+        diameter: 0,
+        spacing: 0,
+        projection: 0,
+        fabBarQty: 0,
+        kg: 0,
+      },
+    },
+    wallRebarObject: {
+      horizontal: {
+        diameter: 0,
+        spacing: 0,
+        stockBarsQty: 0,
+        kg: 0,
+      },
+      vertical: {
+        diameter: 0,
+        spacing: 0,
+        fabBarsQty: 0,
+        kg: 0,
+      },
+    },
+  });
+
   function handleFootingChange(event) {
     const { name, value } = event.target;
-    setFootingObject(prevState => ({
+    setFootingObject((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -30,22 +74,43 @@ export default function Dashboard() {
 
   function handleWallChange(event) {
     const { name, value } = event.target;
-    setWallObject(prevState => ({
+    setWallObject((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   }
 
-  // const [isRebar, setIsRebar] = useState(false);
+  function handleConcreteChange(event) {
+    const { name, value } = event.target;
+    setConcreteObject((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
 
-  // function handleIsRebar() {
-  //   let showRebar = isRebar;
-  //   if (!showRebar) {
-  //     setIsRebar(true);
-  //   } else {
-  //     setIsRebar(false);
-  //   }
-  // }
+  const handleRebarChange = (event) => {
+    const { name, value } = event.target;
+    const keys = name.split('.');
+  
+    setRebarObject((prevState) => {
+      let newState = { ...prevState };
+      let current = newState;
+  
+      for (let i = 0; i < keys.length - 1; i++) {
+        current = current[keys[i]];
+      }
+  
+      current[keys[keys.length - 1]] = value;
+      return newState;
+    });
+    console.log(rebarObject);
+  };
+
+  useEffect(() => {
+    window.footingObject = footingObject;
+    window.concreteObject = concreteObject;
+    window.rebarObject = rebarObject;
+  }, [footingObject, concreteObject, rebarObject]);
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -59,25 +124,24 @@ export default function Dashboard() {
         />
       </div>
       <div>
-        <Wall
-          wallObject={wallObject}
-          handleWallChange={handleWallChange}
-        />
+        <Wall wallObject={wallObject} handleWallChange={handleWallChange} />
       </div>
       <div>
         <Concrete
           footingObject={footingObject}
           wallObject={wallObject}
+          concreteObject={concreteObject}
+          handleConcreteChange={handleConcreteChange}
         />
       </div>
-      {/* <div>
+      <div>
         <Rebar
           footingObject={footingObject}
           wallObject={wallObject}
-          isRebar={isRebar}
-          handleIsRebar={handleIsRebar}
+          rebarObject={rebarObject}
+          handleRebarChange={handleRebarChange}
         />
-      </div> */}
+      </div>
       <div className="flex flex-col items-center justify-between p-2 m-4">
         <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-2 text-lg mb-14 border-solid border-2 border-black">
           <Link href="/">Go To Home</Link>

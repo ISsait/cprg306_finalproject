@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function Concrete({
   footingObject,
   wallObject,
+  handleConcreteChange,
 }) {
-  
 
   const [show, setShow] = useState(false);
 
@@ -23,7 +23,7 @@ export default function Concrete({
     <main className="m-4">
       <span className="flex justify-center">
         <h1 className="text-xl font-bold underline mt-3">Concrete</h1>
-        <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black" onClick={handleShow}>
+        <button className={`${show ? 'bg-green-900 text-amber-300' : 'bg-green-700'} hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black`} onClick={handleShow}>
           {show ? "Hide Concrete" : "Show Concrete"}
         </button>
       </span>
@@ -33,7 +33,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Footing Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onCHange={handleConcreteChange}>
               {footingObject.depth * footingObject.width * footingObject.linear / 1000000}
             </output>
           </span>
@@ -41,7 +41,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Wall Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
               {wallObject.height * wallObject.width * wallObject.linear / 1000000}
             </output>
           </span>
@@ -49,7 +49,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Total Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
               {footingObject.depth * footingObject.width * footingObject.linear / 1000000 + wallObject.height * wallObject.width * wallObject.linear / 1000000}
             </output>
           </span>

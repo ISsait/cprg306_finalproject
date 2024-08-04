@@ -22,7 +22,7 @@ export default function Footing({
     <main className="m-4">
       <span className="flex justify-center">
         <h1 className="text-xl font-bold underline mt-3">Footings</h1>
-        <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black" onClick={handleShow}>
+        <button className={`${show ? 'bg-green-900 text-amber-300' : 'bg-green-700'} hover:underline rounded-md p-1 text-lg m-2 border-solid border-2 border-black`} onClick={handleShow}>
           {show ? "Hide Footing" : "Show Footing"}
         </button>
       </span>
