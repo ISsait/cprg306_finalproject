@@ -6,7 +6,7 @@ import Footing from "../elements/footing/page";
 import Wall from "../elements/wall/page";
 import Concrete from "../quantities/concrete/page";
 import Rebar from "../quantities/rebar/page";
-import ModelViewer from '../services/model';
+
 
 export default function Dashboard() {
   const [footingObject, setFootingObject] = useState({
@@ -102,6 +102,8 @@ export default function Dashboard() {
       }
   
       current[keys[keys.length - 1]] = value;
+
+
       return newState;
     });
   };
@@ -111,15 +113,6 @@ export default function Dashboard() {
     window.concreteObject = concreteObject;
     window.rebarObject = rebarObject;
   }, [footingObject, concreteObject, rebarObject]);
-
-  const [accessToken, setAccessToken] = useState(null);
-  const [modelData, setModelData] = useState(null);
-  
-  useEffect(() => {
-    if (accessToken) {
-      fetchModel(accessToken, 'model-id').then(setModelData);
-    }
-  }, [accessToken]);
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -150,9 +143,6 @@ export default function Dashboard() {
           rebarObject={rebarObject}
           handleRebarChange={handleRebarChange}
         />
-      </div>
-      <div>
-          <ModelViewer modelData={modelData} />
       </div>
       <div className="flex flex-col items-center justify-between p-2 m-4">
         <button className="bg-green-700 hover:bg-green-500 hover:underline rounded-md p-2 text-lg mb-14 border-solid border-2 border-black">
