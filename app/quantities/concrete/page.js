@@ -33,7 +33,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Footing Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onCHange={handleConcreteChange}>
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
               {footingObject.depth * footingObject.width * footingObject.linear / 1000000}
             </output>
           </span>

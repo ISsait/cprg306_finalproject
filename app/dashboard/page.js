@@ -52,13 +52,13 @@ export default function Dashboard() {
       horizontal: {
         diameter: 0,
         spacing: 0,
-        stockBarsQty: 0,
+        stockBarQty: 0,
         kg: 0,
       },
       vertical: {
         diameter: 0,
         spacing: 0,
-        fabBarsQty: 0,
+        fabBarQty: 0,
         kg: 0,
       },
     },
@@ -103,7 +103,6 @@ export default function Dashboard() {
       current[keys[keys.length - 1]] = value;
       return newState;
     });
-    console.log(rebarObject);
   };
 
   useEffect(() => {
