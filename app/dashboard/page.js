@@ -128,7 +128,7 @@ export default function Dashboard() {
   }, [footingObject, concreteObject, rebarObject]);
 
   return (
-    <section className="flex min-h-screen flex-col items-center justify-between p-24">
+    <section className="flex min-h-screen flex-col items-center justify-between p-24" style={{ backgroundImage: `url('./bgDashboard.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <header className="text-4xl text-white font-bold p-2 border-solid border-2 border-white rounded-md">
         Formwork Estimator Dashboard
       </header>
