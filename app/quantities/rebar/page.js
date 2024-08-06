@@ -190,6 +190,12 @@ export default function Rebar({ rebarObject, handleRebarChange }) {
                 </li>
               </ul>
             </section>
+            <span className="block p-2 text-center text-white text-lg font-bold mb-12">
+              Total Footing Rebar Kg:{" "}
+              {rebarObject.footingRebarObject.continuous.kg +
+                rebarObject.footingRebarObject.transverse.kg +
+                rebarObject.footingRebarObject.dowels.kg}
+            </span>
           </span>
           <span>
             <h2 className="text-white text-lg font-bold mx-2 text-center border-b-2 border-white">
@@ -289,6 +295,11 @@ export default function Rebar({ rebarObject, handleRebarChange }) {
                 </li>
               </ul>
             </section>
+            <span className="block p-2 text-center text-white text-lg font-bold mb-12">
+              Total Wall Rebar Kg:{" "}
+              {rebarObject.wallRebarObject.horizontal.kg +
+              rebarObject.wallRebarObject.vertical.kg}
+            </span>
           </span>
         </div>
       )}

@@ -1,8 +1,8 @@
 export function footingRebarQtyCalc(rebarObject, footingObject) {
   if (
-    footingObject.depth === 0 ||
-    footingObject.width === 0 ||
-    footingObject.linear === 0
+    footingObject.depth <= 0 ||
+    footingObject.width <= 0 ||
+    footingObject.linear <= 0
   ) {
     return;
   }
@@ -40,7 +40,7 @@ export function footingRebarQtyCalc(rebarObject, footingObject) {
       ? kgPerMeter20M
       : 0;
 
-  if (continuous.spacing != 0) {
+  if (continuous.spacing > 0) {
     continuous.stockBarQty = Math.ceil(
       (footingObject.linear *
         1.1 *
@@ -53,7 +53,7 @@ export function footingRebarQtyCalc(rebarObject, footingObject) {
     continuous.kg = 0;
     }
 
-  if (transverse.spacing != 0) {
+  if (transverse.spacing > 0) {
     transverse.fabBarQty = Math.ceil(
       footingObject.linear / (transverse.spacing / 1000)
     );
@@ -65,7 +65,7 @@ export function footingRebarQtyCalc(rebarObject, footingObject) {
     transverse.kg = 0;
     }
 
-  if (dowels.spacing != 0 && dowels.projection != 0) {
+  if (dowels.spacing > 0 && dowels.projection > 0) {
     dowels.fabBarQty = Math.ceil(
       footingObject.linear / (dowels.spacing / 1000)
     );
@@ -80,9 +80,9 @@ export function footingRebarQtyCalc(rebarObject, footingObject) {
 
 export function wallRebarQtyCalc(rebarObject, wallObject) {
   if (
-    wallObject.height === 0 ||
-    wallObject.width === 0 ||
-    wallObject.linear === 0
+    wallObject.height <= 0 ||
+    wallObject.width <= 0 ||
+    wallObject.linear <= 0
   ) {
     return;
   }
@@ -111,7 +111,7 @@ export function wallRebarQtyCalc(rebarObject, wallObject) {
       ? kgPerMeter20M
       : 0;
 
-  if (horizontal.spacing != 0) {
+  if (horizontal.spacing > 0) {
     horizontal.stockBarQty = Math.ceil(
       (wallObject.linear *
         1.1 *
@@ -124,7 +124,7 @@ export function wallRebarQtyCalc(rebarObject, wallObject) {
     horizontal.kg = 0;
     }
 
-  if (vertical.spacing != 0) {
+  if (vertical.spacing > 0) {
     vertical.fabBarQty = Math.ceil(
       wallObject.linear / (vertical.spacing / 1000)
     );
