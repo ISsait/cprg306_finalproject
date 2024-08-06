@@ -6,6 +6,7 @@ import Footing from "../elements/footing/page";
 import Wall from "../elements/wall/page";
 import Concrete from "../quantities/concrete/page";
 import Rebar from "../quantities/rebar/page";
+import { footingRebarQtyCalc, wallRebarQtyCalc } from "../quantities/rebar/qtyCalcs";
 
 
 export default function Dashboard() {
@@ -67,18 +68,28 @@ export default function Dashboard() {
 
   function handleFootingChange(event) {
     const { name, value } = event.target;
-    setFootingObject((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    
+    setFootingObject((prevState) => {
+      const current = {
+        ...prevState,
+        [name]: value,
+      };
+      footingRebarQtyCalc(rebarObject, current);
+      return current;
+    });
   }
 
   function handleWallChange(event) {
     const { name, value } = event.target;
-    setWallObject((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    
+    setWallObject((prevState) => {
+      const current = {
+        ...prevState,
+        [name]: value,
+      };
+      wallRebarQtyCalc(rebarObject, current);
+      return current;
+    });
   }
 
   function handleConcreteChange(event) {
@@ -102,8 +113,10 @@ export default function Dashboard() {
       }
   
       current[keys[keys.length - 1]] = value;
-
-
+      
+      current = newState;
+      footingRebarQtyCalc(current, footingObject);
+      wallRebarQtyCalc(current, wallObject);
       return newState;
     });
   };

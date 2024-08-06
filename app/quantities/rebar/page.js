@@ -2,13 +2,8 @@
 
 import { useState } from "react";
 
-export default function Rebar({
-  footingObject,
-  wallObject,
-  rebarObject,
-  handleRebarChange,
-}) {
-  const listItemStyle = "m-2 border-solid border-2 border-slate-700";
+export default function Rebar({ rebarObject, handleRebarChange }) {
+  const listItemStyle = "m-2 p-2 border-solid border-2 border-slate-700";
   const kgPerMeter10M = 0.785;
   const kgPerMeter15M = 1.57;
   const kgPerMeter20M = 2.355;
@@ -52,7 +47,7 @@ export default function Rebar({
                   <select
                     name="footingRebarObject.continuous.diameter"
                     value={rebarObject.footingRebarObject.continuous.diameter}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   >
                     <option value="N/A">Select</option>
@@ -69,9 +64,25 @@ export default function Rebar({
                     type="number"
                     name="footingRebarObject.continuous.spacing"
                     value={rebarObject.footingRebarObject.continuous.spacing}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Continuous Rebar 6 Meter Stock Qty:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.continuous.stockBarQty}
+                  </output>
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Continuous Rebar Kg Mass:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.continuous.kg}
+                  </output>
                 </li>
               </ul>
               <ul className="my-4">
@@ -82,7 +93,7 @@ export default function Rebar({
                   <select
                     name="footingRebarObject.transverse.diameter"
                     value={rebarObject.footingRebarObject.transverse.diameter}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   >
                     <option value="N/A">Select</option>
@@ -99,9 +110,25 @@ export default function Rebar({
                     type="number"
                     name="footingRebarObject.transverse.spacing"
                     value={rebarObject.footingRebarObject.transverse.spacing}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Transverse Rebar Fabricated Qty:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.transverse.fabBarQty}
+                  </output>
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Transverse Rebar Kg Mass:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.transverse.kg}
+                  </output>
                 </li>
               </ul>
               <ul className="my-4">
@@ -112,7 +139,7 @@ export default function Rebar({
                   <select
                     name="footingRebarObject.dowels.diameter"
                     value={rebarObject.footingRebarObject.dowels.diameter}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   >
                     <option value="N/A">Select</option>
@@ -129,7 +156,7 @@ export default function Rebar({
                     type="number"
                     name="footingRebarObject.dowels.spacing"
                     value={rebarObject.footingRebarObject.dowels.spacing}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
                 </li>
@@ -141,9 +168,25 @@ export default function Rebar({
                     type="number"
                     name="footingRebarObject.dowels.projection"
                     value={rebarObject.footingRebarObject.dowels.projection}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Dowel Rebar Fabricated Qty:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.dowels.fabBarQty}
+                  </output>
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Dowel Rebar Kg Mass:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.footingRebarObject.dowels.kg}
+                  </output>
                 </li>
               </ul>
             </section>
@@ -161,7 +204,7 @@ export default function Rebar({
                   <select
                     name="wallRebarObject.horizontal.diameter"
                     value={rebarObject.wallRebarObject.horizontal.diameter}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   >
                     <option value="N/A">Select</option>
@@ -178,9 +221,25 @@ export default function Rebar({
                     type="number"
                     name="wallRebarObject.horizontal.spacing"
                     value={rebarObject.wallRebarObject.horizontal.spacing}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Horizontal Rebar 6 Meter Stock Qty:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.wallRebarObject.horizontal.stockBarQty}
+                  </output>
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Horizontal Rebar Kg Mass:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.wallRebarObject.horizontal.kg}
+                  </output>
                 </li>
               </ul>
               <ul className="my-4">
@@ -191,7 +250,7 @@ export default function Rebar({
                   <select
                     name="wallRebarObject.vertical.diameter"
                     value={rebarObject.wallRebarObject.vertical.diameter}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   >
                     <option value="N/A">Select</option>
@@ -208,9 +267,25 @@ export default function Rebar({
                     type="number"
                     name="wallRebarObject.vertical.spacing"
                     value={rebarObject.wallRebarObject.vertical.spacing}
-                    onChange={(event) =>(handleRebarChange(event))}
+                    onChange={(event) => handleRebarChange(event)}
                     className="m-2 rounded-sm bg-slate-700 text-white"
                   />
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Vertical Rebar Fabricated Qty:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.wallRebarObject.vertical.fabBarQty}
+                  </output>
+                </li>
+                <li className={listItemStyle}>
+                  <label className="text-white text-lg font-bold mx-2">
+                    Vertical Rebar Kg Mass:{" "}
+                  </label>
+                  <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
+                    {rebarObject.wallRebarObject.vertical.kg}
+                  </output>
                 </li>
               </ul>
             </section>
