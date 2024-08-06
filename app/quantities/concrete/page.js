@@ -33,7 +33,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Footing Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
               {footingObject.depth * footingObject.width * footingObject.linear / 1000000}
             </output>
           </span>
@@ -41,7 +41,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Wall Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
               {wallObject.height * wallObject.width * wallObject.linear / 1000000}
             </output>
           </span>
@@ -49,7 +49,7 @@ export default function Concrete({
             <label className="text-white text-lg font-bold mx-2">
               Total Concrete Volume (m^3):{" "}
             </label>
-            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2" onChange={handleConcreteChange}>
+            <output className="m-2 rounded-sm bg-slate-700 text-white p-1 border-solid border-white border-2">
               {footingObject.depth * footingObject.width * footingObject.linear / 1000000 + wallObject.height * wallObject.width * wallObject.linear / 1000000}
             </output>
           </span>
